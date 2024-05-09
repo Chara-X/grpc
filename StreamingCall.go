@@ -15,6 +15,5 @@ func StreamingCall(cli *http.Client, url string, header http.Header, body any) (
 		reqBody.Encode(body)
 	}
 	res, _ = cli.Do(req)
-	resBody = NewDecoder(res.Body)
-	return
+	return req, reqBody, res, NewDecoder(res.Body)
 }
