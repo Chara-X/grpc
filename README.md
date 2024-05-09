@@ -1,5 +1,7 @@
 # grpc
 
+## Client
+
 ```go
 func main() {
 	var caCert, _ = os.ReadFile("resources/cert.pem")
@@ -63,6 +65,27 @@ func DuplexStreaming(cli *http.Client) {
 			break
 		}
 		fmt.Println(u)
+	}
+}
+```
+
+## Server
+
+```go
+func Streaming(res http.ResponseWriter, req *http.Request) {
+	var reqBody, resBody = grpc.NewDecoder(req.Body), grpc.NewEncoder(res)
+	grpc.WriteHeader(res, http.StatusOK)
+	for {
+		var req *user.User
+		if err := reqBody.Decode(&req); err != nil {
+			break
+		}
+		if req.Id == 2 {
+			res.Header().Set(grpc.GrpcMessage, "Bad Request")
+			res.Header().Set(grpc.GrpcStatus, "400")
+			break
+		}
+		resBody.Encode(req)
 	}
 }
 ```
