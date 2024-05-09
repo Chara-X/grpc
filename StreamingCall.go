@@ -15,5 +15,6 @@ func StreamingCall(cli *http.Client, url string, header http.Header, body any) (
 	req.Header.Add("Content-Type", "application/grpc+json")
 	req.Header.Add("Te", "trailers")
 	res, _ = cli.Do(req)
-	return req, reqBody, res, NewDecoder(res.Body)
+	resBody = NewDecoder(res.Body)
+	return
 }
