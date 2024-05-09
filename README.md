@@ -73,7 +73,7 @@ func DuplexStreaming(cli *http.Client) {
 
 ```go
 func Streaming(res http.ResponseWriter, req *http.Request) {
-	var reqBody, resBody = grpc.NewDecoder(req.Body), grpc.NewEncoder(res)
+	var resBody, reqBody = grpc.NewEncoder(res), grpc.NewDecoder(req.Body)
 	grpc.WriteHeader(res, http.StatusOK)
 	for {
 		var req *user.User
