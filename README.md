@@ -89,3 +89,11 @@ func Streaming(res http.ResponseWriter, req *http.Request) {
 	}
 }
 ```
+
+## References
+
+[HTTP2 client-server full-duplex connection](https://github.com/posener/h2conn)
+
+[HTTP/2 Adventure in the Go World](https://posener.github.io/http2)
+
+[Using gRPC with JSON](https://jbrandhorst.com/post/grpc-json)
