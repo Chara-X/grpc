@@ -90,7 +90,7 @@ func Streaming(res http.ResponseWriter, req *http.Request) {
 }
 ```
 
-## References
+## Reference
 
 [HTTP2 client-server full-duplex connection](https://github.com/posener/h2conn)
 
